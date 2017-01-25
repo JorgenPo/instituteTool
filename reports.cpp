@@ -7,6 +7,7 @@
 #include "ui_report5.h"
 #include "ui_report6.h"
 #include "ui_report7.h"
+#include "ui_report8.h"
 
 #include <QSqlError>
 #include <QDebug>
@@ -97,6 +98,17 @@ void Reports::initReports()
     m_report7Model = new QStandardItemModel(this);
     m_report7Ui->listView->setModel(m_report7Model);
 
+    m_report8Ui = new Ui::Report8;
+
+    m_report8 = new QWidget;
+    m_report8Ui->setupUi(m_report8);
+
+    m_report8Model = new QStandardItemModel(this);
+    m_report8Ui->listView->setModel(m_report8Model);
+
+    connect(m_report8Ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateReport8()));
+
+    findBestEmployer();
 }
 
 void Reports::updateReport1()
@@ -440,6 +452,77 @@ void Reports::updateReport7()
     qDebug() << "Report7 was successful!" << endl;
 }
 
+void Reports::updateReport8()
+{
+    qDebug() << "Starting report8 query..." << endl;
+
+    QString id = m_report8Ui->comboBox->currentData().toString();
+
+    QString queryString = tr(
+              "SELECT p.name, p.last_name FROM passports as p "
+              "INNER JOIN employees as e ON e.pass_id = p.id "
+              "INNER JOIN disciplines as d ON d.employer_id = e.id "
+              "WHERE d.discipline_id = '%1';").arg(id);
+
+
+    QSqlQuery query;
+
+    qDebug() << "Query string: " << queryString << endl;
+
+    if ( !query.exec(queryString) ) {
+        qDebug() << "Error with query " << queryString
+                 << ";\nERROR TEXT: " << query.lastError() << endl;
+        return;
+    }
+
+    if ( query.size() == 0 ) {
+        m_report8Model->clear();
+        qDebug() << "Query has no results..." << endl;
+        return;
+    }
+
+    m_report8Model->clear();
+    QString string;
+    while ( query.next() ) {
+        string = query.value(0).toString() + " " +
+                 query.value(1).toString();
+        m_report8Model->appendRow(new QStandardItem(string));
+    }
+
+    qDebug() << "Report8 was successful!" << endl;
+}
+
+void Reports::findBestEmployer()
+{
+    QString queryString = tr(
+              "SELECT p.name, p.last_name, t.experience FROM passports as p "
+              "INNER JOIN employees as e ON e.pass_id = p.id "
+              "INNER JOIN teachers  as t ON t.employer_id = e.id "
+              "WHERE t.experience IN (SELECT MAX(t.experience) FROM teachers as t);");
+
+    QSqlQuery query;
+
+    qDebug() << "Query string: " << queryString << endl;
+
+    if ( !query.exec(queryString) ) {
+        qDebug() << "Error with query " << queryString
+                 << ";\nERROR TEXT: " << query.lastError() << endl;
+        return;
+    }
+
+    if ( query.size() == 0 ) {
+        m_report8Model->clear();
+        qDebug() << "Query has no results..." << endl;
+        return;
+    }
+
+    query.next();
+    QString teacher = QString(query.value(0).toString() + " " + query.value(1).toString() +
+            " проработал(а) целых " + query.value(2).toString() + " лет!!!");
+
+    m_bestTeacher = new QString(teacher);
+}
+
 void Reports::on_query1_clicked()
 {
     m_report1->show();
@@ -510,4 +593,44 @@ void Reports::on_query7_clicked()
 {
     updateReport7();
     m_report7->show();
+}
+
+void Reports::on_query8_clicked()
+{
+    qDebug() << "Starting report8 query..." << endl;
+
+    QString queryString = tr(
+              "SELECT d.id, d.name FROM disciplines_names as d;");
+
+    qDebug() << "Query string: " << queryString << endl;
+
+    QSqlQuery query;
+
+    if ( !query.exec(queryString) ) {
+        qDebug() << "Error with query " << queryString
+                 << ";\nERROR TEXT: " << query.lastError() << endl;
+        return;
+    }
+
+    if ( query.size() == 0 ) {
+        qDebug() << "Query has no results..." << endl;
+    }
+
+    m_report8Ui->comboBox->clear();
+    while ( query.next() ) {
+        m_report8Ui->comboBox->addItem(query.value(1).toString(), query.value(0));
+    }
+
+    qDebug() << "Report4 list query was successful!" << endl;
+
+    m_report8->show();
+}
+
+void Reports::on_query9_clicked()
+{
+    QString name = *m_bestTeacher;
+    QMessageBox::information(this,
+                             tr("Самый опытный сотрудник"),
+                             tr("%1 самый опытный сотрудник!").arg(name),
+                             QMessageBox::Ok);
 }

@@ -15,6 +15,7 @@ class Report4;
 class Report5;
 class Report6;
 class Report7;
+class Report8;
 }
 
 class Reports : public QWidget
@@ -38,6 +39,9 @@ private slots:
     void updateReport5();
     void updateReport6();
     void updateReport7();
+    void updateReport8();
+
+    void findBestEmployer();
 
     void on_query2_clicked();
 
@@ -56,6 +60,10 @@ private slots:
     void on_query6_clicked();
 
     void on_query7_clicked();
+
+    void on_query8_clicked();
+
+    void on_query9_clicked();
 
 private:
     Ui::Reports *ui;
@@ -81,11 +89,17 @@ private:
     QWidget     *m_report7;
     Ui::Report7 *m_report7Ui;
 
+    QWidget     *m_report8;
+    Ui::Report8 *m_report8Ui;
+
     QSqlQueryModel *m_report1Model;
     QStandardItemModel* m_report3Model;
     QStandardItemModel* m_report5Model;
     QStandardItemModel* m_report6Model;
     QStandardItemModel* m_report7Model;
+    QStandardItemModel* m_report8Model;
+
+    QString*    m_bestTeacher;
 };
 
 #endif // REPORTS_H
