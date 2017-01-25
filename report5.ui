@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Report5</class>
+ <widget class="QWidget" name="Report5">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>472</width>
+    <height>305</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Месяц</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Сотрудники в отпуске</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QComboBox" name="mounth">
+     <item>
+      <property name="text">
+       <string>Январь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Февраль</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Март</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Апрель</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Май</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Июнь </string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Июль</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Август</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Сентябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Октябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ноябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Декабрь</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QListView" name="employees"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

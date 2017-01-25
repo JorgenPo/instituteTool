@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EInfo</class>
+ <widget class="QWidget" name="EInfo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>483</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Данные сотрудника</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <property name="leftMargin">
+    <number>200</number>
+   </property>
+   <property name="rightMargin">
+    <number>200</number>
+   </property>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="inn_id"/>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="pens_id"/>
+   </item>
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="department"/>
+   </item>
+   <item row="13" column="1">
+    <widget class="QLineEdit" name="date"/>
+   </item>
+   <item row="17" column="1">
+    <widget class="QLineEdit" name="position"/>
+   </item>
+   <item row="19" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Степень</string>
+     </property>
+    </widget>
+   </item>
+   <item row="22" column="1">
+    <widget class="QLineEdit" name="degree"/>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Номер СНИЛС</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Номер ИНН</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Отдел</string>
+     </property>
+    </widget>
+   </item>
+   <item row="16" column="1">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Должность</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="1">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Дата принятия на работу</string>
+     </property>
+    </widget>
+   </item>
+   <item row="24" column="1">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Звание</string>
+     </property>
+    </widget>
+   </item>
+   <item row="25" column="1">
+    <widget class="QLineEdit" name="rank"/>
+   </item>
+   <item row="26" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="prevButton">
+       <property name="text">
+        <string>Назад</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addButton">
+       <property name="text">
+        <string>Добавить</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

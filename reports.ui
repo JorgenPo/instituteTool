@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Reports</class>
+ <widget class="QWidget" name="Reports">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>643</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Запросы к БД</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <property name="leftMargin">
+    <number>200</number>
+   </property>
+   <property name="topMargin">
+    <number>90</number>
+   </property>
+   <property name="rightMargin">
+    <number>200</number>
+   </property>
+   <item row="0" column="0" colspan="2">
+    <widget class="QPushButton" name="query1">
+     <property name="text">
+      <string>Списки преподавателей</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QPushButton" name="query2">
+     <property name="text">
+      <string>Средняя нагрузка ассистентов</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QPushButton" name="query4">
+     <property name="text">
+      <string>Дисциплины доцентов</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QPushButton" name="query3">
+     <property name="text">
+      <string>Кол-во преподавателей категории</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QPushButton" name="query5">
+     <property name="text">
+      <string>Список сотрудников в отпуске</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QPushButton" name="query6">
+     <property name="text">
+      <string>Преподаватели без контракта</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QPushButton" name="query7">
+     <property name="text">
+      <string>Сотрудники с медалью </string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QPushButton" name="query8">
+     <property name="text">
+      <string>Преподаватели, читающие ...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <widget class="QPushButton" name="query9">
+     <property name="text">
+      <string>Самый опытный сотрудник</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
