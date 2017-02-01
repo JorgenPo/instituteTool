@@ -495,10 +495,9 @@ void Reports::updateReport8()
 void Reports::findBestEmployer()
 {
     QString queryString = tr(
-              "SELECT p.name, p.last_name, t.experience FROM passports as p "
+              "SELECT p.name, p.last_name, e.employ_date FROM passports as p "
               "INNER JOIN employees as e ON e.pass_id = p.id "
-              "INNER JOIN teachers  as t ON t.employer_id = e.id "
-              "WHERE t.experience IN (SELECT MAX(t.experience) FROM teachers as t);");
+              "WHERE e.employ_date IN (SELECT MIN(e.employ_date) FROM employees as e);");
 
     QSqlQuery query;
 
@@ -511,14 +510,17 @@ void Reports::findBestEmployer()
     }
 
     if ( query.size() == 0 ) {
-        m_report8Model->clear();
         qDebug() << "Query has no results..." << endl;
         return;
     }
 
     query.next();
+
+    QDate date = query.value(2).toDate();
+    int years = date.daysTo(QDate::currentDate()) / 365;
+
     QString teacher = QString(query.value(0).toString() + " " + query.value(1).toString() +
-            " проработал(а) целых " + query.value(2).toString() + " лет!!!");
+            " проработал(а) целых %1 лет!!!").arg(years);
 
     m_bestTeacher = new QString(teacher);
 }

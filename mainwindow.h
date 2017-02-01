@@ -4,6 +4,7 @@
 
 #include "reports.h"
 #include "teacher.h"
+#include "textreports.h"
 #include "vacations.h"
 
 #include <QMainWindow>
@@ -52,6 +53,8 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     void initSQL();
 
@@ -63,6 +66,7 @@ private:
     Teacher *m_teacher;
     Vacations *m_vacations;
     Reports *m_reports;
+    TextReports *m_textReports;
 
     QSqlTableModel *m_employeesModel;
     QSqlTableModel *m_teachersModel;

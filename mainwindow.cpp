@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_teacher = new Teacher;
     m_vacations = new Vacations;
     m_reports = new Reports;
+    m_textReports = new TextReports;
 
     this->move(QApplication::desktop()->availableGeometry().center()
                - this->rect().center());
@@ -36,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
                - m_vacations->rect().center());
     m_reports->move(QApplication::desktop()->availableGeometry().center()
                - m_reports->rect().center());
+    m_textReports->move(QApplication::desktop()->availableGeometry().center()
+               - m_textReports->rect().center());
 
     connect(m_menu, SIGNAL(onEntered()), this, SLOT(show()));
 
@@ -53,7 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_employeesModel->setHeaderData(5, Qt::Horizontal, tr("Отдел/Кафедра"));
     m_employeesModel->setHeaderData(6, Qt::Horizontal, tr("Дата приема"));
     m_employeesModel->setHeaderData(7, Qt::Horizontal, tr("Должность"));
-    m_employeesModel->setHeaderData(8, Qt::Horizontal, tr("Степень"));
+    m_employeesModel->setHeaderData(8, Qt::Horizontal, tr("Категория"));
     m_employeesModel->setHeaderData(9, Qt::Horizontal, tr("Звание"));
 
     m_teachersModel = new QSqlTableModel(this);
@@ -237,4 +240,9 @@ void MainWindow::on_pushButton_5_clicked()
 void MainWindow::on_pushButton_4_clicked()
 {
     m_reports->show();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    m_textReports->show();
 }
